@@ -38,4 +38,24 @@ public class Utils {
         return jsonMatch;
     }
 
+    public static boolean assertPetsState(String responseJson, String expectedState) throws ParseException {
+        boolean jsonMatch = true;
+        JSONParser parser = new JSONParser();
+        JSONObject expectedPET = null;
+
+        Object obj  = parser.parse(responseJson);
+        JSONArray expectedPets = new JSONArray();
+        expectedPets.add(obj);
+        String petStatus;
+
+        for (int i=0; i < expectedPets.size(); i++) {
+            expectedPET = (JSONObject)(((JSONArray)expectedPets.get(i)).get(0));
+            petStatus = (String) expectedPET.get("status");
+            if (!petStatus.equals(expectedState)) {
+                jsonMatch = false;
+                break;
+            }
+        }
+        return jsonMatch;
+    }
 }

@@ -2,15 +2,12 @@ Feature: Api automated test cases
   Background:
     * def utilsClass = Java.type('classes.Utils')
   Scenario: 01 Get all available pets. Assert expected result
-    * def expectedJSON = read("../data/expectedAvailablePets.json")
     Given url baseURL+'/pet/findByStatus?status=available'
     When method GET
-    And status 200
+    Then status 200
     * string responseJSON = response
-    * string expectedJSON = expectedJSON
     * print responseJSON
-    * print expectedJSON
-    * def testResult = utilsClass.assertPets(expectedJSON, responseJSON)
+    * def testResult = utilsClass.assertPetsState(responseJSON, "available")
     * match testResult == true
 
   Scenario: 02 Post a new available pet to the store. Assert new pet added.
