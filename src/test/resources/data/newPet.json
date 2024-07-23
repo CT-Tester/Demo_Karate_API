@@ -1,0 +1,18 @@
+{
+  "id": 9999,
+  "category": {
+    "id": 27,
+    "name": "Mammalia"
+  },
+  "name": "Platypus",
+  "photoUrls": [
+    "https://museumsvictoria.com.au/media/16781/platypus-closeup.jpg"
+  ],
+  "tags": [
+    {
+      "id": 885,
+      "name": "Australian"
+    }
+  ],
+  "status": "available"
+}
